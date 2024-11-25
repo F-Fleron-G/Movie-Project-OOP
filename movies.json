@@ -99,5 +99,11 @@
         "poster": "https://m.media-amazon.com/images/M/MV5BMTU2NjA1ODgzMF5BMl5BanBnXkFtZTgwMTM2MTI4MjE@._V1_SX300.jpg",
         "imdbID": "tt2911666",
         "notes": ""
+    },
+    "red": {
+        "rating": 7.0,
+        "year": 2010,
+        "poster": "https://m.media-amazon.com/images/M/MV5BMzg2Mjg1OTk0NF5BMl5BanBnXkFtZTcwMjQ4MTA3Mw@@._V1_SX300.jpg",
+        "imdbID": "tt1245526"
     }
 }

@@ -1,4 +1,8 @@
 import requests
+from dotenv import load_dotenv
+import os
+
+load_dotenv()
 
 RED = "\033[91m"
 GREEN = "\033[92m"
@@ -28,7 +32,7 @@ class MovieApp:
         """
         self._storage = storage
         self.api_url = "http://www.omdbapi.com/"
-        self.api_key = "a942dd70"
+        self.api_key = os.getenv("API_KEY")
 
     def add_movie(self):
         """
