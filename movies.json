@@ -1,0 +1,103 @@
+{
+    "Django Unchained": {
+        "rating": 8.5,
+        "year": 2012,
+        "poster": "https://m.media-amazon.com/images/M/MV5BMjIyNTQ5NjQ1OV5BMl5BanBnXkFtZTcwODg1MDU4OA@@._V1_SX300.jpg",
+        "imdbID": "tt1853728",
+        "notes": "Awesome western with a twist!"
+    },
+    "Infinite": {
+        "rating": 5.5,
+        "year": 2021,
+        "poster": "https://m.media-amazon.com/images/M/MV5BNTZhMWU0NzEtNzViMC00NzljLWJlNzYtYTA4MGE1YWFmOTU3XkEyXkFqcGc@._V1_SX300.jpg",
+        "imdbID": "tt6654210"
+    },
+    "Snatch": {
+        "rating": 8.2,
+        "year": 2000,
+        "poster": "https://m.media-amazon.com/images/M/MV5BYzk5NjJkMTQtN2IyNC00YWM5LTlhZmMtNGI3MWNhMTU1YTc4XkEyXkFqcGc@._V1_SX300.jpg",
+        "imdbID": "tt0208092",
+        "notes": "Outstanding Performance by Brad Pitt!"
+    },
+    "Ali": {
+        "rating": 6.7,
+        "year": 2001,
+        "poster": "https://m.media-amazon.com/images/M/MV5BODVhNWUwMGItZTg1My00Njg1LTllMjctNzQzMjIzODUyZDhmXkEyXkFqcGc@._V1_SX300.jpg",
+        "imdbID": "tt0248667",
+        "notes": ""
+    },
+    "The Inglorious Bastards": {
+        "rating": 6.5,
+        "year": 1978,
+        "poster": "https://m.media-amazon.com/images/M/MV5BY2Q2Yzk1Y2MtZTBjOC00MDdmLWIwM2QtNTJjZmIyYmY3NjVjXkEyXkFqcGc@._V1_SX300.jpg",
+        "imdbID": "tt0076584"
+    },
+    "The Wolf of Wall Street": {
+        "rating": 8.2,
+        "year": 2013,
+        "poster": "https://m.media-amazon.com/images/M/MV5BMjIxMjgxNTk0MF5BMl5BanBnXkFtZTgwNjIyOTg2MDE@._V1_SX300.jpg",
+        "imdbID": "tt0993846"
+    },
+    "The Penguin": {
+        "rating": 8.8,
+        "year": 2024,
+        "poster": "https://m.media-amazon.com/images/M/MV5BYmU3MzYzOWEtOTdkZi00YzA1LTliMzQtNDdiZDBjY2FiNmFlXkEyXkFqcGc@._V1_SX300.jpg",
+        "imdbID": "tt15435876"
+    },
+    "Deadpool": {
+        "rating": 8.0,
+        "year": 2016,
+        "poster": "https://m.media-amazon.com/images/M/MV5BNzY3ZWU5NGQtOTViNC00ZWVmLTliNjAtNzViNzlkZWQ4YzQ4XkEyXkFqcGc@._V1_SX300.jpg",
+        "imdbID": "tt1431045"
+    },
+    "The Road": {
+        "rating": 7.2,
+        "year": 2009,
+        "poster": "https://m.media-amazon.com/images/M/MV5BMTAwNzk4NTU3NDReQTJeQWpwZ15BbWU3MDg3OTEyODI@._V1_SX300.jpg",
+        "imdbID": "tt0898367"
+    },
+    "Inception": {
+        "rating": 8.8,
+        "year": 2010,
+        "poster": "https://m.media-amazon.com/images/M/MV5BMjAxMzY3NjcxNF5BMl5BanBnXkFtZTcwNTI5OTM0Mw@@._V1_SX300.jpg",
+        "imdbID": "tt1375666"
+    },
+    "Forrest Gump": {
+        "rating": 5.6,
+        "year": 2021,
+        "poster": "https://m.media-amazon.com/images/M/MV5BNDYwNzVjMTItZmU5YS00YjQ5LTljYjgtMjY2NDVmYWMyNWFmXkEyXkFqcGc@._V1_SX300.jpg",
+        "imdbID": "tt0109830",
+        "notes": ""
+    },
+    "Road House": {
+        "rating": 6.2,
+        "year": 2024,
+        "poster": "https://m.media-amazon.com/images/M/MV5BODVkYjlkM2UtNWVlMS00N2U1LTgxOTYtODlmNmE1YTgzMjczXkEyXkFqcGc@._V1_SX300.jpg",
+        "imdbID": "tt3359350"
+    },
+    "Old Henry": {
+        "rating": 7.3,
+        "year": 2021,
+        "poster": "https://m.media-amazon.com/images/M/MV5BYzI5NTJiZTYtNDE0MS00ZTc3LWFiZTItOTY2Y2NlYTc2Mzc0XkEyXkFqcGc@._V1_SX300.jpg",
+        "imdbID": "tt12731980"
+    },
+    "Perfume: The Story of a Murderer": {
+        "rating": 7.5,
+        "year": 2006,
+        "poster": "https://m.media-amazon.com/images/M/MV5BMTg2Mzk2NjkzNl5BMl5BanBnXkFtZTYwMzIzOTc2._V1_SX300.jpg",
+        "imdbID": "tt0396171"
+    },
+    "The Gentlemen": {
+        "rating": 7.8,
+        "year": 2019,
+        "poster": "https://m.media-amazon.com/images/M/MV5BMjE2ZjQ4ZGMtZjFhMi00NmI5LTliNjEtODczMWMxNjliZjgxXkEyXkFqcGc@._V1_SX300.jpg",
+        "imdbID": "tt8367814"
+    },
+    "John Wick": {
+        "rating": 7.4,
+        "year": 2014,
+        "poster": "https://m.media-amazon.com/images/M/MV5BMTU2NjA1ODgzMF5BMl5BanBnXkFtZTgwMTM2MTI4MjE@._V1_SX300.jpg",
+        "imdbID": "tt2911666",
+        "notes": ""
+    }
+}

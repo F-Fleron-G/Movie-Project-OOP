@@ -1,0 +1,235 @@
+* {
+box-sizing: content-box;
+}
+
+body {
+  background-color: #F5F5F5;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+  font-family: Monaco;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+}
+
+img, .movie-poster, .movie-grid, section, footer {
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+h1 {
+  font-family: Garamond;
+  letter-spacing: 30px;
+  text-align: center;
+  line-height: 2.5em;
+  font-size: 25px;
+  color: white;
+}
+
+.blockquote {
+   color: black;
+}
+
+header {
+    width: 100%;
+    height: 100%;
+    margin: 0 auto;
+    border-radius: 10px;
+}
+
+.main-title {
+  border-radius: 10px 10px 0 0;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 100px;
+  background-image: url("https://clipart-library.com/image_gallery/n970056.png");
+  background-repeat: no-repeat, repeat;
+  background-position-y: -140px;
+  background-size: 100%;
+  height: 110px;
+  margin-bottom: 5px;
+}
+
+#search-form {
+  margin-top: -100px;
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  align-items:center;
+  width: 100%;
+  height: 50px;
+  color: white;
+}
+
+.search-input[type="text"] {
+  padding: 8pt;
+  font-size: 10pt;
+  width: 250px;
+  border-radius: 25px;
+  border: 1px solid #262626;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+}
+
+.search-button {
+  padding: 10px 15px;
+  background-color: none;
+  font-size: 10pt;
+  margin-right: 10px;
+  color: #262626;
+  border-radius: 25px;
+  border: 1px solid #262626;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+  cursor: pointer;
+}
+
+.search-button:hover {
+  background-color: grey;
+  color:#ffffff;
+}
+
+.movie-grid {
+  list-style-type: none;
+  display: flex;
+  flex-wrap: wrap;
+  padding: 0px;
+  margin: 20px 0;
+  justify-content: center;
+}
+
+.movie-grid li{
+  background: #ffffff;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+  flex: 1 1 calc(20% - 40px);
+  margin: 20px;
+  text-align: center;
+  border-radius: 10px;
+  padding: 15px 5px 5px 5px;
+  max-width: 250px;
+  font-size: 10pt;
+  line-height: 1.75em;
+}
+
+.movie-poster {
+  position: relative;
+  width: 100%;
+  height: 350px;
+  object-fit: 100%;
+  border-radius: 10px;
+}
+
+.movie-poster:hover {
+  opacity: 0.7;
+  -webkit-filter: grayscale(100%);
+  filter: grayscale(100%);
+  cursor: pointer;
+}
+
+.movie-poster:hover::after {
+    content: attr(title);
+    position: absolute;
+    bottom: -30px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: rgba(0, 0, 0, 0.8);
+    color: white;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 12px;
+    white-space: nowrap;
+    z-index: 10;
+}
+
+.about-section {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  text-align: center;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+  font-size: 16px;
+  width: 80%;
+  margin: 0 auto;
+  margin-bottom: 30px;
+  padding: 40px;
+  border-radius: 20px;
+  background-color: #fff;
+}
+
+.about-title {
+ letter-spacing: .85em;
+ font-size: 20px;
+ line-height: 50px;
+}
+
+.about-text {
+  flex: 2;
+  padding: 30px;
+  font-family: Monaco, sans-serif;
+  line-height: 1.6em;
+}
+
+.about-image {
+  flex: 1;
+  text-align: center;
+}
+
+.about-image img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 10px;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16);
+}
+
+.footer {
+  width: 100%;
+  height: 100%;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #262626;
+  max-width: 1200px;
+  font-family: Monaco;
+  color: #ffffff;
+  line-height: 2em;
+  border: 1px solid #262626;
+  border-radius: 0 0 10px 10px;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+}
+
+.foot-menu {
+    font-size: 14px;
+}
+.foot-menu:hover{
+  background-color: none;
+  opacity: 80%;
+}
+
+.back-to-top {
+    position: fixed;
+    bottom: 100px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #262626;
+    color: #fff;
+    border: 1px solid white;
+    border-radius: 100%;
+    font-size: 20px;
+    width: 40px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    z-index: 1000;
+}
+
+.back-to-top:hover {
+    background-color: #ffffff;
+    border: 1px solid #262626;
+    color: #262626;
+}
