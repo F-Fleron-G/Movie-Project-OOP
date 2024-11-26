@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <title>__TEMPLATE_TITLE__</title>
+        <link rel="stylesheet" href="static/style.css">
+    </head>
+    <header id="top">
+        <section>
+            <div class="main-title"><h1>☆VIEWERS FAVOURITE MOVIES☆</h1></div>
+            <div id="search-form">
+                <form action="/results">
+                    <label for="movie_title"></label>
+                    <input class="search-input" id="movie_title" type="text" name="movie_title"
+                           placeholder="Enter Movie Title"/>
+                    <button class="search-button" type="submit">Search</button>
+                </form>
+            </div>
+        </section>
+    </header>
+    <script>
+        document.querySelector('form').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const searchValue = document.getElementById('movie_title').value.toLowerCase().trim();
+
+            const movieCards = document.querySelectorAll('.movie-grid li');
+            let found = false;
+            movieCards.forEach(card => {
+                const movieTitle = card.querySelector('b').textContent.toLowerCase();
+                if (movieTitle.includes(searchValue)) {
+                    card.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                    found = true;
+                }
+            });
+
+            if (!found) {
+                alert("Movie not found. Please check the title and try again!");
+            }
+        });
+    </script>
+    <body>
+         <div>
+            <ol class="movie-grid">
+                __TEMPLATE_MOVIE_GRID__
+            </ol>
+        </div>
+         <section class="about-section">
+             <div class="about-image">
+                <img src="images/Project-Illustration.png" alt="Stressed man illustration">
+             </div>
+             <div class="about-text">
+                <h2 class="about-title"><b style="font-size: 70px;">📽</b> ️Hej, hej!<br> Frederic here</h2>
+                <p> just wanting to let you know that</p>
+                <p><b style="letter-spacing:.65em;">this project has been a challenging ride,
+                but one I’ve thoroughly enjoyed every step of the way!</b></p>
+                <p>It’s been an incredible journey of discovery, pushing me to uncover creative
+                skills I didn’t even know I had.</p>
+                <p> What a blast.</p>
+                <p class="about-title">And...cut!<b style="font-size: 50px;">🎬</b></p>
+              </div>
+         </section>
+    <footer class="footer">
+        <div>
+            <button id="back-to-top" class="back-to-top">↑</button>
+            <div style="text-align: left;">
+                <ul style="list-style: none; padding: 0;">
+                    <li><a class="foot-menu" href="#search-form" style="color: white; text-decoration: none;">Search Movie</a></li>
+                    <li><a class="foot-menu" href="https://www.omdbapi.com/" target="_blank" style="color: white; text-decoration: none;">About OMDb</a></li>
+                </ul>
+            </div>
+            <div style="display: flex; justify-content: center; align-items: baseline; text-align: center; font-size: 10px;">
+                <p>Website created by Frederic G. Fleron | All rights reserved - 2024 ©</p>
+            </div>
+        </div>
+    </footer>
+    <script>
+        const backToTopButton = document.getElementById('back-to-top');
+
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 300) {
+                backToTopButton.style.display = 'flex';
+            } else {
+                backToTopButton.style.display = 'none';
+            }
+        });
+
+        backToTopButton.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+    </script>
+    </body>
+</html>

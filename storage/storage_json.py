@@ -1,21 +1,22 @@
+import os
 import json
-from istorage import IStorage
+from storage.istorage import IStorage
 
 
 class StorageJson(IStorage):
-    """
-    A JSON-based movie storage system.
-    It reads from and writes to a JSON file to keep track of the movies.
-    """
-
-    def __init__(self, file_path):
+    def __init__(self, file_path=None):
         """
         Sets up the storage with a JSON file.
 
         Args:
-            file_path (str): The file where the movie data is stored.
+            file_path (str): The file where the movie data is stored. Defaults to 'data/movies.json'.
         """
-        self.file_path = file_path
+        base_dir = os.path.dirname(os.path.abspath(__file__))
+        self.file_path = file_path or os.path.join(base_dir, '../data/movies.json')
+
+        if not os.path.exists(self.file_path):
+            with open(self.file_path, 'w') as file:
+                json.dump({}, file, indent=4)
 
     def _read_movies(self):
         """
@@ -27,10 +28,14 @@ class StorageJson(IStorage):
         """
         try:
             with open(self.file_path, 'r') as file:
-                return json.load(file)
+                movies = json.load(file)
+                # print(f"Movies loaded: {movies}")
+                return movies
         except FileNotFoundError:
+            print(f"File {self.file_path} not found. Creating a new file.")
             return {}
         except json.JSONDecodeError:
+            print("Error decoding JSON. Returning empty dictionary.")
             return {}
 
     def _write_movies(self, movies):
@@ -50,7 +55,9 @@ class StorageJson(IStorage):
         Returns:
             dict: A dictionary with all the movie details.
         """
-        return self._read_movies()
+        movies = self._read_movies()
+        # print(f"Movies from storage: {movies}")
+        return movies
 
     def add_movie(self, title, details):
         """
@@ -60,9 +67,11 @@ class StorageJson(IStorage):
             title (str): Title of the movie.
             details (dict): A dictionary containing the movie details.
         """
+        # print(f"Adding movie: {title} with details: {details}")
         movies = self.list_movies()
         movies[title] = details
         self._write_movies(movies)
+        # print(f"Movie added: {movies}")
 
     def delete_movie(self, title):
         """

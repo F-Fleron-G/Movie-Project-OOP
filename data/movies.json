@@ -3,7 +3,8 @@
         "rating": 8.5,
         "year": 2012,
         "poster": "https://m.media-amazon.com/images/M/MV5BMjIyNTQ5NjQ1OV5BMl5BanBnXkFtZTcwODg1MDU4OA@@._V1_SX300.jpg",
-        "imdbID": "tt1853728"
+        "imdbID": "tt1853728",
+        "notes": "An authentic western."
     },
     "the wolf of wall street": {
         "rating": 8.2,
@@ -15,7 +16,8 @@
         "rating": 7.4,
         "year": 2014,
         "poster": "https://m.media-amazon.com/images/M/MV5BMTU2NjA1ODgzMF5BMl5BanBnXkFtZTgwMTM2MTI4MjE@._V1_SX300.jpg",
-        "imdbID": "tt2911666"
+        "imdbID": "tt2911666",
+        "notes": "Action pack to the teeth!"
     },
     "snatch": {
         "rating": 8.2,
@@ -45,7 +47,8 @@
         "rating": 8.8,
         "year": 2010,
         "poster": "https://m.media-amazon.com/images/M/MV5BMjAxMzY3NjcxNF5BMl5BanBnXkFtZTcwNTI5OTM0Mw@@._V1_SX300.jpg",
-        "imdbID": "tt1375666"
+        "imdbID": "tt1375666",
+        "notes": ""
     },
     "road house": {
         "rating": 6.2,

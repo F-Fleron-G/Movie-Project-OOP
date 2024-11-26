@@ -13,22 +13,47 @@ RESET = "\033[0m"
 
 
 def normalize_movie_name(movie_name):
-    """Normalizes the movie name by stripping whitespace and converting to lowercase."""
+    """
+        Cleans up a movie name for consistent usage.
+
+        Strips unnecessary spaces and converts the name to lowercase for easier
+        comparisons and searches.
+
+        Args:
+            movie_name (str): The movie title to normalize.
+
+        Returns:
+            str: A cleaned, lowercase version of the movie name.
+        """
     return movie_name.strip().lower()
 
 
 def capitalize_movie_name(movie_name):
-    """Capitalizes the movie title to make it more readable."""
+    """
+    Formats a movie name to be more presentable.
+
+    Strips unnecessary spaces and capitalizes each word in the movie name.
+
+    Args:
+        movie_name (str): The movie title to format.
+
+    Returns:
+        str: A nicely capitalized version of the movie name.
+    """
     return movie_name.strip().title()
 
 
 class MovieApp:
     def __init__(self, storage):
         """
-        Initializes the MovieApp with the specified storage.
+        Sets up the MovieApp with a storage system.
+
+        This method connects the app to a storage system that handles the
+        database of movies. The storage system must implement methods like
+        adding, deleting, and updating movie details.
 
         Args:
-            storage: An instance of a class implementing the IStorage interface.
+            storage: An object that implements the IStorage interface.
         """
         self._storage = storage
         self.api_url = "http://www.omdbapi.com/"
@@ -36,7 +61,23 @@ class MovieApp:
 
     def add_movie(self):
         """
-        Adds a movie to the collection by fetching data from the OMDb API.
+        Adds a new movie to the collection by fetching details from OMDb.
+
+        This method allows to search for a movie using its title. It fetches
+        data like the release year, IMDb rating, and poster from the OMDb API
+        and saves it to the collection.
+
+        Steps:
+        1. Enter the movie's title when prompted.
+        2. The app fetches details from OMDb and stores them in your collection.
+
+        Notes:
+            - If the movie isn't found in OMDb, it provides a friendly message.
+            - Ensure the `.env` file contains a valid API key for OMDb.
+
+        Example:
+            Add a movie titled "Inception," and it will fetch the details and save
+            them to view later.
         """
         movie_title = input(f"{GREEN}Please enter a movie title:{RESET} ").strip()
 
@@ -78,8 +119,14 @@ class MovieApp:
 
     def _command_list_movies(self):
         """
-        Shows all the movies stored in the app.
-        If there are no movies, you'll get a friendly message about that too.
+        Lists all the movies in the collection.
+
+        Displays all the movies stored in the database along with their details.
+        If no movies are found, it provides a friendly message.
+
+        Notes:
+            - Movies will appear in a readable format with their titles
+              capitalized.
         """
         movies = self._storage.list_movies()
         if movies:
@@ -90,7 +137,20 @@ class MovieApp:
 
     def delete_movie(self):
         """
-        Allows the user to delete a movie by its title.
+        Removes a movie from the collection.
+
+        Allows the user to delete a movie by its title. If the movie isn't found in
+        the database, a friendly message will appear.
+
+        Steps:
+        1. Enter the movie's title when prompted.
+        2. The app checks if the movie exists and deletes it.
+
+        Example:
+            Delete a movie titled "Titanic" from the collection.
+
+        Notes:
+            - Make sure to enter the exact title you used when adding the movie.
         """
         try:
             movie_title = input(f"{GREEN}Please enter the movie to delete:{RESET} ").strip()
@@ -113,33 +173,60 @@ class MovieApp:
 
     def update_movie(self):
         """
-        Updates a movie's details in the database.
+        Updates the details of an existing movie in the collection.
+
+        This allows to add or update a note for a movie that's already in the
+        collection. Simply enter the movie's title, and if it exists in the
+        database, you can provide new notes for it. If the movie isn't found, a
+        friendly message will appear.
+
+        Steps:
+        1. Enter the name of the movie you'd like to update.
+        2. If the movie exists, new notes can be added (up to 100 characters).
+        3. The notes will be saved and can be viewed later.
+
+        Notes:
+            - Make sure to enter the exact movie title you used when adding it.
+            - The system will normalize titles to handle small inconsistencies like
+              extra spaces or different capitalization.
         """
         movies = self._storage.list_movies()
-        movie_name = input(f"{GREEN}Enter the movie name:{RESET} ").strip()
+        movie_name = input(f"{GREEN}Please enter the movie name:{RESET} ").strip()
+        normalized_name = normalize_movie_name(movie_name)
 
-        if movie_name not in movies:
+        if normalized_name not in movies:
             print(f"Movie {YELLOW}'{movie_name}'{RESET} not found!")
             return
 
-        notes = input(f"{GREEN}Enter your notes for the movie:{RESET} ").strip()
+        notes = input(f"{GREEN}Please enter your notes for the movie:{RESET} ").strip()
         notes = notes[:100]
 
-        movie_details = movies[movie_name]
+        movie_details = movies[normalized_name]
         movie_details["notes"] = notes
 
         try:
-            self._storage.update_movie(movie_name, movie_details)
-            print(f"Notes for {YELLOW}'{movie_name}'{RESET} successfully updated!")
+            self._storage.update_movie(normalized_name, movie_details)
+            print(f"Notes for {YELLOW}'{capitalize_movie_name(movie_name)}'"
+                  f"{RESET} successfully updated!\n")
         except ValueError as e:
             print(f"{RED}Error updating movie: {e}{RESET}")
 
     def search_movie(self):
         """
-        Search for a movie by its title and list all movies that contain the
-        search term.
+        Searches the collection for movies that match a keyword.
+
+        This method allows to search for movies by their title or part of
+        their title. Matching movies will be displayed with their details.
+
+        Steps:
+        1. Enter a keyword to search for.
+        2. View all matching movies, including their title, rating, year, and IMDb link.
+
+        Notes:
+            - The search is case-insensitive and can match partial titles.
+            - If no matches are found, a friendly message will appear.
         """
-        search_query = input(f"{GREEN}Enter the movie title to search:"
+        search_query = input(f"{GREEN}Please enter the movie title to search:"
                              f"{RESET} ").strip()
 
         normalized_query = normalize_movie_name(search_query)
@@ -155,7 +242,8 @@ class MovieApp:
                 found_movies.append((title, details))
 
         if found_movies:
-            print(f"\nFound movies matching {YELLOW}'{capitalize_movie_name(search_query)}'"
+            print(f"\nFound movies matching {YELLOW}'"
+                  f"{capitalize_movie_name(search_query)}'"
                   f":{RESET}\n")
             for title, details in found_movies:
                 imdb_link = f"https://www.imdb.com/title/{details['imdbID']}"
@@ -168,8 +256,30 @@ class MovieApp:
                   f"{capitalize_movie_name(search_query)}'.{RESET}")
 
     def generate_website(self):
+        """
+        Creates an HTML webpage for the movie collection.
+
+        This function transforms the movie database into an organized
+        webpage with all the movies that have been added. Each movie will
+        include details like its title, year, IMDb rating, poster, and the
+        notes/comments (if available).
+
+        Steps:
+        1. Reads an HTML template stored in `static/index_template.html`.
+        2. Populates the template with movie details from the collection.
+        3. Generates a new file named `index.html` that can be opened in the browser.
+
+        Notes:
+            - Add more movies to increase the collection on the webpage!
+            - Users can share their generated `index.html` with friends to show off
+              their favorite picks.
+
+        Error Handling:
+            - If the template file is missing or there's an unexpected error,
+              a friendly error message will appear.
+        """
         try:
-            with open('_static/index_template.html', 'r') as template_file:
+            with open('static/index_template.html', 'r') as template_file:
                 template = template_file.read()
 
             template = template.replace('__TEMPLATE_TITLE__',
@@ -205,11 +315,25 @@ class MovieApp:
             print(f"{RED}An unexpected error occurred: {e}{RESET}")
 
     def run(self):
-        """Displays the introductory page with the menu options for the user."""
+        """
+        Runs the MovieApp, showing a menu to interact with the collection.
+
+        This method displays an interactive menu where one can perform actions
+        like adding, deleting, commenting, or viewing the movie collection. It
+        also lets one generate a webpage for the movies or search the collection.
+
+        Options:
+        - Add a new movie.
+        - Delete a movie.
+        - Add/update or remove a pop-up comment.
+        - Search for a movie by title.
+        - Generate a webpage with the collection.
+
+        """
         print(f"\n{YELLOW}{'☆' * 10}{RESET} VIEWERS FAVOURITE MOVIES {YELLOW}"
               f"{'☆' * 10}{RESET}")
         print(f"{GREEN}Add movies, delete them and add comments. See it all"
-              f" on the web!{RESET}\n")
+              f" on the website!{RESET}\n")
         menu_title = "Menu:"
         print(f"{menu_title}\n{YELLOW}{'‾' * len(menu_title)}{RESET}")
 
@@ -219,7 +343,7 @@ class MovieApp:
                 1: "List movies",
                 2: "Add movie",
                 3: "Delete movie",
-                4: "Update movie",
+                4: "Update comment",
                 5: "Search movie",
                 6: "Generate website",
             }
