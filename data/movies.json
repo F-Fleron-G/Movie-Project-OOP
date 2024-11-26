@@ -1,0 +1,75 @@
+{
+    "django unchained": {
+        "rating": 8.5,
+        "year": 2012,
+        "poster": "https://m.media-amazon.com/images/M/MV5BMjIyNTQ5NjQ1OV5BMl5BanBnXkFtZTcwODg1MDU4OA@@._V1_SX300.jpg",
+        "imdbID": "tt1853728"
+    },
+    "the wolf of wall street": {
+        "rating": 8.2,
+        "year": 2013,
+        "poster": "https://m.media-amazon.com/images/M/MV5BMjIxMjgxNTk0MF5BMl5BanBnXkFtZTgwNjIyOTg2MDE@._V1_SX300.jpg",
+        "imdbID": "tt0993846"
+    },
+    "john wick": {
+        "rating": 7.4,
+        "year": 2014,
+        "poster": "https://m.media-amazon.com/images/M/MV5BMTU2NjA1ODgzMF5BMl5BanBnXkFtZTgwMTM2MTI4MjE@._V1_SX300.jpg",
+        "imdbID": "tt2911666"
+    },
+    "snatch": {
+        "rating": 8.2,
+        "year": 2000,
+        "poster": "https://m.media-amazon.com/images/M/MV5BYzk5NjJkMTQtN2IyNC00YWM5LTlhZmMtNGI3MWNhMTU1YTc4XkEyXkFqcGc@._V1_SX300.jpg",
+        "imdbID": "tt0208092"
+    },
+    "the penguin": {
+        "rating": 8.8,
+        "year": 2024,
+        "poster": "https://m.media-amazon.com/images/M/MV5BYmU3MzYzOWEtOTdkZi00YzA1LTliMzQtNDdiZDBjY2FiNmFlXkEyXkFqcGc@._V1_SX300.jpg",
+        "imdbID": "tt15435876"
+    },
+    "deadpool & wolverine": {
+        "rating": 7.8,
+        "year": 2024,
+        "poster": "https://m.media-amazon.com/images/M/MV5BZTk5ODY0MmQtMzA3Ni00NGY1LThiYzItZThiNjFiNDM4MTM3XkEyXkFqcGc@._V1_SX300.jpg",
+        "imdbID": "tt6263850"
+    },
+    "the road": {
+        "rating": 7.2,
+        "year": 2009,
+        "poster": "https://m.media-amazon.com/images/M/MV5BMTAwNzk4NTU3NDReQTJeQWpwZ15BbWU3MDg3OTEyODI@._V1_SX300.jpg",
+        "imdbID": "tt0898367"
+    },
+    "inception": {
+        "rating": 8.8,
+        "year": 2010,
+        "poster": "https://m.media-amazon.com/images/M/MV5BMjAxMzY3NjcxNF5BMl5BanBnXkFtZTcwNTI5OTM0Mw@@._V1_SX300.jpg",
+        "imdbID": "tt1375666"
+    },
+    "road house": {
+        "rating": 6.2,
+        "year": 2024,
+        "poster": "https://m.media-amazon.com/images/M/MV5BODVkYjlkM2UtNWVlMS00N2U1LTgxOTYtODlmNmE1YTgzMjczXkEyXkFqcGc@._V1_SX300.jpg",
+        "imdbID": "tt3359350"
+    },
+    "harry potter": {
+        "rating": 8.1,
+        "year": 2011,
+        "poster": "https://m.media-amazon.com/images/M/MV5BOTA1Mzc2N2ItZWRiNS00MjQzLTlmZDQtMjU0NmY1YWRkMGQ4XkEyXkFqcGc@._V1_SX300.jpg",
+        "imdbID": "tt1201607"
+    },
+    "old henry": {
+        "rating": 7.3,
+        "year": 2021,
+        "poster": "https://m.media-amazon.com/images/M/MV5BYzI5NTJiZTYtNDE0MS00ZTc3LWFiZTItOTY2Y2NlYTc2Mzc0XkEyXkFqcGc@._V1_SX300.jpg",
+        "imdbID": "tt12731980",
+        "notes": "Billy the Kid is back!"
+    },
+    "the gentlemen": {
+        "rating": 7.8,
+        "year": 2019,
+        "poster": "https://m.media-amazon.com/images/M/MV5BMjE2ZjQ4ZGMtZjFhMi00NmI5LTliNjEtODczMWMxNjliZjgxXkEyXkFqcGc@._V1_SX300.jpg",
+        "imdbID": "tt8367814"
+    }
+}
