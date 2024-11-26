@@ -66,7 +66,10 @@ The project uses the following Python libraries:
 - **requests**: To fetch movie data from the OMDb API.
 - **python-dotenv**: To manage the OMDb API key securely.
 
-To install dependencies, run: pip install - requirements.txt
+To install dependencies, run:
+```bash
+pip install - requirements.txt
+```
 
 ---
 ## Contributing 🤝
