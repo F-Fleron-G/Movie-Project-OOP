@@ -121,17 +121,20 @@ class MovieApp:
         """
         Lists all the movies in the collection.
 
-        Displays all the movies stored in the database along with their details.
-        If no movies are found, it provides a friendly message.
-
-        Notes:
-            - Movies will appear in a readable format with their titles
-              capitalized.
+        Displays movies stored in the database with their titles, release year,
+        and IMDb rating.
         """
         movies = self._storage.list_movies()
         if movies:
+            movie_list_title = "Current Listed Movies:"
+            print(f"\n{movie_list_title}\n{YELLOW}{'‾' * len(movie_list_title)}{RESET}")
             for title, details in movies.items():
-                print(f"{YELLOW}{capitalize_movie_name(title)}{RESET}: {details}\n")
+                year = details.get("year", "Unknown Year")
+                rating = details.get("rating", "N/A")
+                print(f"{YELLOW}{capitalize_movie_name(title)}{RESET} | "
+                      f"{CYAN}{year}{RESET} | "
+                      f"Rating: {CYAN}{rating}{RESET}")
+            print()
         else:
             print(f"{RED}Oops! No movies found in the database.{RESET}")
 
