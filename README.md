@@ -37,15 +37,24 @@ A simple and interactive Movie Management application that lets users add, updat
 
 ## Project Structure 📂
 
+```
+project/
+│
 ├── data/
-│   └── movies.json        
-├── static/                
-├── storage/               
-├── main.py                
-├── movie_app.py           
-├── requirements.txt       
-├── README.md              
-└── .gitignore      
+│   └── movies.json               # Stores movie data locally in JSON format
+├── static/                       # Contains static files
+│   └── index_template.html       # HTML template for the website
+├── storage/                      # Storage system implementation
+│   ├── __init__.py
+│   ├── storage_csv.py            # (Optional) CSV-based storage (if implemented)
+│   └── storage_json.py           # JSON-based storage (used by default)
+├── .gitignore                    # Files and directories to ignore in Git
+├── README.md                     # Documentation for the project
+├── requirements.txt              # Python dependencies
+├── main.py                       # Entry point to the application
+└── movie_app.py                  # Core movie application logic
+```
+  
 
 ---
 
