@@ -97,6 +97,15 @@
                          | Year: 2024
                     </li>
                 
+                    <li id="movie-tt0088939">
+                        <a href="https://www.imdb.com/title/tt0088939" target="_blank">
+                            <img src="https://m.media-amazon.com/images/M/MV5BM2MyZjBlMGItNThkMi00YWExLThlZmUtZmI2MGM3YWE3YTY1XkEyXkFqcGc@._V1_SX300.jpg" alt="Poster of the color purple"
+                             class="movie-poster" title="No notes available" />
+                        </a>
+                        <b>The Color Purple</b><br>Rating: 7.7 ✩
+                         | Year: 1985
+                    </li>
+                
                     <li id="movie-tt0898367">
                         <a href="https://www.imdb.com/title/tt0898367" target="_blank">
                             <img src="https://m.media-amazon.com/images/M/MV5BMTAwNzk4NTU3NDReQTJeQWpwZ15BbWU3MDg3OTEyODI@._V1_SX300.jpg" alt="Poster of the road"
@@ -127,7 +136,7 @@
                     <li id="movie-tt1201607">
                         <a href="https://www.imdb.com/title/tt1201607" target="_blank">
                             <img src="https://m.media-amazon.com/images/M/MV5BOTA1Mzc2N2ItZWRiNS00MjQzLTlmZDQtMjU0NmY1YWRkMGQ4XkEyXkFqcGc@._V1_SX300.jpg" alt="Poster of harry potter"
-                             class="movie-poster" title="No notes available" />
+                             class="movie-poster" title="The Ultimate Wizary Battle!" />
                         </a>
                         <b>Harry Potter</b><br>Rating: 8.1 ✩
                          | Year: 2011
@@ -151,23 +160,55 @@
                          | Year: 2019
                     </li>
                 
+                    <li id="movie-tt0195685">
+                        <a href="https://www.imdb.com/title/tt0195685" target="_blank">
+                            <img src="https://m.media-amazon.com/images/M/MV5BZTNkNzkzYTEtYTJkMC00MTNkLWE0YjMtOGYxNGI0ODNiMzIwXkEyXkFqcGc@._V1_SX300.jpg" alt="Poster of erin brockovich"
+                             class="movie-poster" title="No notes available" />
+                        </a>
+                        <b>Erin Brockovich</b><br>Rating: 7.4 ✩
+                         | Year: 2000
+                    </li>
+                
+                    <li id="movie-tt0110912">
+                        <a href="https://www.imdb.com/title/tt0110912" target="_blank">
+                            <img src="https://m.media-amazon.com/images/M/MV5BYTViYTE3ZGQtNDBlMC00ZTAyLTkyODMtZGRiZDg0MjA2YThkXkEyXkFqcGc@._V1_SX300.jpg" alt="Poster of pulp fiction"
+                             class="movie-poster" title=""A Royal with cheese..."" />
+                        </a>
+                        <b>Pulp Fiction</b><br>Rating: 8.9 ✩
+                         | Year: 1994
+                    </li>
+                
+                    <li id="movie-tt5797184">
+                        <a href="https://www.imdb.com/title/tt5797184" target="_blank">
+                            <img src="https://m.media-amazon.com/images/M/MV5BYTFmODhiMzMtYjM3MC00MzNjLWEzYjctNzIxZjk2M2JiMDA4XkEyXkFqcGc@._V1_SX300.jpg" alt="Poster of escape from pretoria"
+                             class="movie-poster" title="No notes available" />
+                        </a>
+                        <b>Escape From Pretoria</b><br>Rating: 6.8 ✩
+                         | Year: 2020
+                    </li>
+                
             </ol>
         </div>
-         <section class="about-section">
-             <div class="about-image">
-                <img src="images/Project-Illustration.png" alt="Stressed man illustration">
-             </div>
-             <div class="about-text">
-                <h2 class="about-title"><b style="font-size: 70px;">📽</b> ️Hej, hej!<br> Frederic here</h2>
-                <p> just wanting to let you know that</p>
-                <p><b style="letter-spacing:.65em;">this project has been a challenging ride,
-                but one I’ve thoroughly enjoyed every step of the way!</b></p>
-                <p>It’s been an incredible journey of discovery, pushing me to uncover creative
-                skills I didn’t even know I had.</p>
-                <p> What a blast.</p>
-                <p class="about-title">And...cut!<b style="font-size: 50px;">🎬</b></p>
-              </div>
-         </section>
+         <div class="unfold-container">
+            <p>Find out here a personal note from the creator of this website:</p>
+             <button id="unfold-button">Show Note</button>
+        </div>
+
+    <section class="about-section" id="about-section" style="display: none;">
+        <div class="about-image">
+            <img src="images/Project-Illustration.png" alt="Stressed man illustration">
+        </div>
+        <div class="about-text">
+            <h2 class="about-title"><b style="font-size: 70px;">📽</b> ️Hej, hej!<br> Frederic here</h2>
+            <p> just wanting to let you know that</p>
+            <p><b style="letter-spacing:.65em;">this project has been a challenging ride,
+           but one I’ve thoroughly enjoyed every step of the way!</b></p>
+           <p>It’s been an incredible journey of discovery, pushing me to uncover creative
+           skills I didn’t even know I had.</p>
+           <p> What a blast.</p>
+           <p class="about-title">And...cut!<b style="font-size: 50px;">🎬</b></p>
+        </div>
+    </section>
     <footer class="footer">
         <div>
             <button id="back-to-top" class="back-to-top">↑</button>
@@ -196,6 +237,19 @@
         backToTopButton.addEventListener('click', () => {
             window.scrollTo({ top: 0, behavior: 'smooth' });
         });
-    </script>
+
+            const unfoldButton = document.getElementById('unfold-button');
+            const aboutSection = document.getElementById('about-section');
+
+            unfoldButton.addEventListener('click', () => {
+                if (aboutSection.style.display === 'none') {
+                    aboutSection.style.display = 'flex'; // or 'block', depending on your layout
+                    unfoldButton.textContent = 'Hide Note';
+                } else {
+                    aboutSection.style.display = 'none';
+                    unfoldButton.textContent = 'Show Note';
+                }
+            });
+        </script>
     </body>
 </html>

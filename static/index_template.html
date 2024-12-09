@@ -45,21 +45,26 @@
                 __TEMPLATE_MOVIE_GRID__
             </ol>
         </div>
-         <section class="about-section">
-             <div class="about-image">
-                <img src="images/Project-Illustration.png" alt="Stressed man illustration">
-             </div>
-             <div class="about-text">
-                <h2 class="about-title"><b style="font-size: 70px;">📽</b> ️Hej, hej!<br> Frederic here</h2>
-                <p> just wanting to let you know that</p>
-                <p><b style="letter-spacing:.65em;">this project has been a challenging ride,
-                but one I’ve thoroughly enjoyed every step of the way!</b></p>
-                <p>It’s been an incredible journey of discovery, pushing me to uncover creative
-                skills I didn’t even know I had.</p>
-                <p> What a blast.</p>
-                <p class="about-title">And...cut!<b style="font-size: 50px;">🎬</b></p>
-              </div>
-         </section>
+         <div class="unfold-container">
+            <p>Find out here a personal note from the creator of this website:</p>
+             <button id="unfold-button">Show Note</button>
+        </div>
+
+    <section class="about-section" id="about-section" style="display: none;">
+        <div class="about-image">
+            <img src="images/Project-Illustration.png" alt="Stressed man illustration">
+        </div>
+        <div class="about-text">
+            <h2 class="about-title"><b style="font-size: 70px;">📽</b> ️Hej, hej!<br> Frederic here</h2>
+            <p> just wanting to let you know that</p>
+            <p><b style="letter-spacing:.65em;">this project has been a challenging ride,
+           but one I’ve thoroughly enjoyed every step of the way!</b></p>
+           <p>It’s been an incredible journey of discovery, pushing me to uncover creative
+           skills I didn’t even know I had.</p>
+           <p> What a blast.</p>
+           <p class="about-title">And...cut!<b style="font-size: 50px;">🎬</b></p>
+        </div>
+    </section>
     <footer class="footer">
         <div>
             <button id="back-to-top" class="back-to-top">↑</button>
@@ -88,6 +93,19 @@
         backToTopButton.addEventListener('click', () => {
             window.scrollTo({ top: 0, behavior: 'smooth' });
         });
-    </script>
+
+            const unfoldButton = document.getElementById('unfold-button');
+            const aboutSection = document.getElementById('about-section');
+
+            unfoldButton.addEventListener('click', () => {
+                if (aboutSection.style.display === 'none') {
+                    aboutSection.style.display = 'flex'; // or 'block', depending on your layout
+                    unfoldButton.textContent = 'Hide Note';
+                } else {
+                    aboutSection.style.display = 'none';
+                    unfoldButton.textContent = 'Show Note';
+                }
+            });
+        </script>
     </body>
 </html>

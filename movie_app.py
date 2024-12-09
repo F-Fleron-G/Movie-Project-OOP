@@ -1,4 +1,5 @@
 import requests
+import random
 from dotenv import load_dotenv
 import os
 
@@ -110,7 +111,7 @@ class MovieApp:
             )
 
             print(f"{PURPLE}Movie '{capitalize_movie_name(title)}' added"
-                  f" successfully!{RESET}\n")
+                  f" successfully!{RESET}")
 
         except requests.exceptions.RequestException as e:
             print(f"{RED}An error occurred while accessing the OMDb API. Please try again"
@@ -165,7 +166,7 @@ class MovieApp:
             if normalized_title in movies:
                 self._storage.delete_movie(normalized_title)
                 print(f"{YELLOW}'{capitalize_movie_name(movie_title)}'{RESET} has "
-                      f"been successfully deleted.\n")
+                      f"been successfully deleted.")
             else:
                 print(
                     f"{RED}Movie{RESET} {YELLOW}'{capitalize_movie_name(movie_title)}'"
@@ -254,9 +255,167 @@ class MovieApp:
                       f"Rating: {CYAN}{details['rating']}{RESET} | Year:"
                       f" {CYAN}{details['year']}{RESET}")
                 print(f"IMDb Link: {imdb_link}\n")
+
         else:
             print(f"{RED}No movies found matching '"
                   f"{capitalize_movie_name(search_query)}'.{RESET}")
+
+    def show_stats(self):
+        """
+        Shows off some fun facts about your movie collection.
+
+        This method gives you an overview of your movies, including:
+        - Average rating (so you know if your taste is more high-brow or low-key)
+        - Median rating (to see where the “middle ground” lies in your collection)
+        - Your top-rated movie(s) and bottom-rated movie(s), so you can brag or hide them.
+
+        Use this feature to get a quick snapshot of how your collection stacks up!
+        """
+        movies = self._storage.list_movies()
+
+        if not movies:
+            print(f"{RED}Sorry, there are no movies available."
+                  f" Please add one first.{RESET}")
+            return
+
+        ratings = []
+        highest_rating = None
+        lowest_rating = None
+        highest_rated_movies = []
+        lowest_rated_movies = []
+        total_rating = 0
+
+        for title, details in movies.items():
+            rating = details.get('rating', 0)
+            ratings.append(rating)
+            total_rating += rating
+
+            if highest_rating is None or rating > highest_rating:
+                highest_rating = rating
+                highest_rated_movies = [title]
+            elif rating == highest_rating:
+                if title not in highest_rated_movies:
+                    highest_rated_movies.append(title)
+
+            if lowest_rating is None or rating < lowest_rating:
+                lowest_rating = rating
+                lowest_rated_movies = [title]
+            elif rating == lowest_rating:
+                if title not in lowest_rated_movies:
+                    lowest_rated_movies.append(title)
+
+        average_rating = total_rating / len(ratings)
+        ratings.sort()
+        mid = len(ratings) // 2
+        if len(ratings) % 2 == 0:
+            median_rating = (ratings[mid - 1] + ratings[mid]) / 2
+        else:
+            median_rating = ratings[mid]
+
+        stats_title = "Movie List Statistics:"
+        print(f"\n{stats_title}\n{YELLOW}{'‾' * len(stats_title)}{RESET}")
+        print(f"Average rating: {CYAN}{average_rating:.1f}{RESET}")
+        print(f"Median rating: {CYAN}{median_rating:.1f}{RESET}")
+
+        print("Best movie(s):", end=" ")
+        for movie in highest_rated_movies:
+            print(f"{YELLOW}{capitalize_movie_name(movie)}{RESET},"
+                  f" {CYAN}{highest_rating}{RESET}", end=" / ")
+        print()
+
+        print("Worst movie(s):", end=" ")
+        for movie in lowest_rated_movies:
+            print(f"{YELLOW}{capitalize_movie_name(movie)}{RESET},"
+                  f" {CYAN}{lowest_rating}{RESET}", end=" / ")
+            print()
+        print()
+
+    def random_movie(self):
+        """
+        Feeling indecisive? Let fate choose a movie for you!
+
+        This method picks a movie at random from your collection and displays its details.
+        Perfect if you’re having a movie night but can’t decide what to watch.
+        Take a chance—who knows, you might rediscover an old favorite!
+        """
+        movies = self._storage.list_movies()
+
+        if not movies:
+            print(f"{RED}No movies available.{RESET}")
+            return
+
+        title = random.choice(list(movies.keys()))
+        details = movies[title]
+        movie_rec_title = "Recommended Movie:"
+        print(f"\n{movie_rec_title}\n{YELLOW}{'‾' * len(movie_rec_title)}{RESET}")
+        print(f"{YELLOW}{capitalize_movie_name(title)}{RESET} ({details['year']}),"
+              f" {CYAN}{details['rating']}{RESET}")
+        print()
+
+    def movies_sorted_by_rating(self):
+        """
+        Ranks your movies from legendary to... well, less legendary.
+
+        This method sorts your entire collection by rating, from the highest rated
+        (the crème de la crème) to the lowest rated (the “it was okay, I guess”).
+        Quickly find out which flicks take the crown and which ones are still waiting
+        for their big comeback.
+        """
+        movies = self._storage.list_movies()
+
+        if not movies:
+            print(f"{RED}No movies available to sort.{RESET}")
+            return
+
+        sorted_movies = sorted(movies.items(),
+                               key=lambda item: item[1].get('rating', 0), reverse=True)
+
+        ordered_rated_movies_title = "Movies Ordered by Rating:"
+        print(f"\n{ordered_rated_movies_title}\n{YELLOW}"
+              f"{'‾' * len(ordered_rated_movies_title)}{RESET}")
+
+        for movie, details in sorted_movies:
+            print(
+                f"{YELLOW}{capitalize_movie_name(movie)}{RESET}"
+                f" ({details['year']}), {CYAN}{details['rating']}{RESET}")
+        print()
+
+    def movies_sorted_by_year(self):
+        """
+        Travel through time with your movie collection.
+
+        This method sorts all of your movies by their release year. Whether you choose
+        to see the newest hits first or journey back to the classics, it’s a neat way
+        to explore how your tastes have evolved—or stayed comfortingly old-school!
+        """
+        movies = self._storage.list_movies()
+
+        if not movies:
+            print(f"{RED}No movies available to sort.{RESET}")
+            return
+
+        sorted_movies = sorted(movies.items(), key=lambda item: item[1].get('year', 0))
+
+        by_year_title = "Movies Sorted By Year:"
+        print(f"\n{by_year_title}\n{YELLOW}{'‾' * len(by_year_title)}{RESET}")
+
+        while True:
+            order_choice = input(f"{GREEN}To sort from newest to oldest movies type: 'L'\n"
+                                 f"To sort from oldest to newest movies type: 'E'\n{RESET}").strip().lower()
+            if order_choice == 'l':
+                sorted_movies.reverse()
+                break
+            elif order_choice == 'e':
+                break
+            else:
+                print(f"{RED}Wrong input! Please enter either 'L' or 'E'.{RESET}")
+
+        for movie, details in sorted_movies:
+            year = details.get('year', 'N/A')
+            rating = details.get('rating', 'N/A')
+            print(f"{YELLOW}{capitalize_movie_name(movie)}{RESET} ({year}),"
+                  f" {CYAN}{rating}{RESET}")
+        print()
 
     def generate_website(self):
         """
@@ -319,19 +478,21 @@ class MovieApp:
 
     def run(self):
         """
-        Runs the MovieApp, showing a menu to interact with the collection.
+        Brings everything together in one interactive menu.
 
-        This method displays an interactive menu where one can perform actions
-        like adding, deleting, commenting, or viewing the movie collection. It
-        also lets one generate a webpage for the movies or search the collection.
+        This method offers a friendly menu where you can:
+        - List all movies you’ve stored.
+        - Add new flicks to your collection.
+        - Delete any titles you’re no longer fond of.
+        - Update notes (comments) on your movies.
+        - Search for a movie by its title.
+        - Check out some fun stats (like average ratings and best/worst movies).
+        - Pick a random movie for those indecisive nights.
+        - See your movies ranked by rating or sorted by year.
+        - Finally, generate a cool-looking website that showcases your entire library!
 
-        Options:
-        - Add a new movie.
-        - Delete a movie.
-        - Add/update or remove a pop-up comment.
-        - Search for a movie by title.
-        - Generate a webpage with the collection.
-
+        Just follow the on-screen instructions, choose a number, and have fun
+        managing your personal movie empire!
         """
         print(f"\n{YELLOW}{'☆' * 10}{RESET} VIEWERS FAVOURITE MOVIES {YELLOW}"
               f"{'☆' * 10}{RESET}")
@@ -348,13 +509,17 @@ class MovieApp:
                 3: "Delete movie",
                 4: "Update comment",
                 5: "Search movie",
-                6: "Generate website",
+                6: "Stats",
+                7: "Random movie",
+                8: "Movies sorted by rating",
+                9: "Movies sorted by year",
+                10: "Generate website"
             }
 
             for key, val in menu_options.items():
                 print(f"{YELLOW}{key}{RESET}. {val}")
 
-            choice = input(f"{GREEN}\nPlease enter choice (0-6):{RESET} ")
+            choice = input(f"{GREEN}\nPlease enter choice (0-10):{RESET} ")
 
             if choice == "0":
                 print(f"{PURPLE}Thanks for using the MovieApp. See you next time!{RESET}")
@@ -370,7 +535,15 @@ class MovieApp:
             elif choice == "5":
                 self.search_movie()
             elif choice == "6":
+                self.show_stats()
+            elif choice == "7":
+                self.random_movie()
+            elif choice == "8":
+                self.movies_sorted_by_rating()
+            elif choice == "9":
+                self.movies_sorted_by_year()
+            elif choice == "10":
                 self.generate_website()
             else:
-                print(f"{RED}Movie title not found! Check your spelling and"
-                      f" try again.{RESET}")
+                print(f"{RED}Invalid Entry! Please enter a number from 0-10.{RESET}")
+            print()

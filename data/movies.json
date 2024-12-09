@@ -37,6 +37,12 @@
         "poster": "https://m.media-amazon.com/images/M/MV5BZTk5ODY0MmQtMzA3Ni00NGY1LThiYzItZThiNjFiNDM4MTM3XkEyXkFqcGc@._V1_SX300.jpg",
         "imdbID": "tt6263850"
     },
+    "the color purple": {
+        "rating": 7.7,
+        "year": 1985,
+        "poster": "https://m.media-amazon.com/images/M/MV5BM2MyZjBlMGItNThkMi00YWExLThlZmUtZmI2MGM3YWE3YTY1XkEyXkFqcGc@._V1_SX300.jpg",
+        "imdbID": "tt0088939"
+    },
     "the road": {
         "rating": 7.2,
         "year": 2009,
@@ -60,7 +66,8 @@
         "rating": 8.1,
         "year": 2011,
         "poster": "https://m.media-amazon.com/images/M/MV5BOTA1Mzc2N2ItZWRiNS00MjQzLTlmZDQtMjU0NmY1YWRkMGQ4XkEyXkFqcGc@._V1_SX300.jpg",
-        "imdbID": "tt1201607"
+        "imdbID": "tt1201607",
+        "notes": "The Ultimate Wizary Battle!"
     },
     "old henry": {
         "rating": 7.3,
@@ -74,5 +81,24 @@
         "year": 2019,
         "poster": "https://m.media-amazon.com/images/M/MV5BMjE2ZjQ4ZGMtZjFhMi00NmI5LTliNjEtODczMWMxNjliZjgxXkEyXkFqcGc@._V1_SX300.jpg",
         "imdbID": "tt8367814"
+    },
+    "erin brockovich": {
+        "rating": 7.4,
+        "year": 2000,
+        "poster": "https://m.media-amazon.com/images/M/MV5BZTNkNzkzYTEtYTJkMC00MTNkLWE0YjMtOGYxNGI0ODNiMzIwXkEyXkFqcGc@._V1_SX300.jpg",
+        "imdbID": "tt0195685"
+    },
+    "pulp fiction": {
+        "rating": 8.9,
+        "year": 1994,
+        "poster": "https://m.media-amazon.com/images/M/MV5BYTViYTE3ZGQtNDBlMC00ZTAyLTkyODMtZGRiZDg0MjA2YThkXkEyXkFqcGc@._V1_SX300.jpg",
+        "imdbID": "tt0110912",
+        "notes": "\"A Royal with cheese...\""
+    },
+    "escape from pretoria": {
+        "rating": 6.8,
+        "year": 2020,
+        "poster": "https://m.media-amazon.com/images/M/MV5BYTFmODhiMzMtYjM3MC00MzNjLWEzYjctNzIxZjk2M2JiMDA4XkEyXkFqcGc@._V1_SX300.jpg",
+        "imdbID": "tt5797184"
     }
 }

@@ -89,7 +89,7 @@ header {
 }
 
 .search-button:hover {
-  background-color: grey;
+  background-color: #4974cf;
   color:#ffffff;
 }
 
@@ -184,6 +184,37 @@ header {
   height: auto;
   border-radius: 10px;
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16);
+}
+
+.unfold-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin: 40px auto;
+    text-align: center;
+}
+
+#unfold-button {
+    background-color: #ffffff;
+    color: #262626;
+    border: 1px solid #262626;
+    padding: 10px 20px;
+    font-size: 14px;
+    border-radius: 25px;
+    cursor: pointer;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16),
+                0 3px 6px rgba(0, 0, 0, 0.23);
+    transition: background-color 0.3s ease,
+                box-shadow 0.3s ease;
+    margin-bottom: 40px;
+}
+
+#unfold-button:hover {
+    background-color: #4974cf;
+    color: #ffffff;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.16),
+                0 5px 10px rgba(0, 0, 0, 0.23);
 }
 
 .footer {
